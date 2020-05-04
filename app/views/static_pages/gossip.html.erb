@@ -1,6 +1,6 @@
 <h1>  <%= @gossip.title %>  </h1>
 
 
-	<p> <%= @gossip.content %> </p>
-	<br/>
-  <p> <%= @gossip.user.first_name %> </p>
+<p> <%= @gossip.content %> </p>
+<br/>
+<p> <%= @gossip.user.first_name %> <%= link_to 'Profil', user_path(@gossip.user_id) %> </p>

@@ -19,6 +19,10 @@ Tag.destroy_all
 User.destroy_all
 PrivateMessageRecipient.destroy_all
 
+# Remettre les compteurs à 0
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
 
 # Création de 10 villes et de 10 utilisateurs associés
 10.times do
