@@ -1,0 +1,9 @@
+<h1> Bienvenue sur ce better gossip</h1>
+
+<h2> Les potins </h2>
+
+<% @all_gossips.each do |g| %>
+	<h3> Contenu : <%=g.title%> </h3>
+	<p> Auteur : <%=g.user.first_name %> </p>
+	<br/>
+<% end %>
