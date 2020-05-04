@@ -3,8 +3,16 @@
 <h2> Les potins </h2>
 
 <% @all_gossips.each_with_index do |g,id| %>
-	<h3> Contenu : <%=g.title%> </h3>
-	<p> Auteur : <%=g.user.first_name %> </p>
-	<br/>
-  <p><%= link_to 'lire la suite', gossip_path(id+1) %></p>
+
+<div class="card mt-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%=g.title%></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
+    <p class="card-text"><%=g.created_at %></p>
+    <p class="card-text"><%=g.content[0..20] %>...</p>
+    <p class="card-link"><%= link_to 'lire la suite', gossip_path(id+1) %></p>
+
+  </div>
+</div>
+
 <% end %>
