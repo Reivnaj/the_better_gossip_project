@@ -2,8 +2,9 @@
 
 <h2> Les potins </h2>
 
-<% @all_gossips.each do |g| %>
+<% @all_gossips.each_with_index do |g,id| %>
 	<h3> Contenu : <%=g.title%> </h3>
 	<p> Auteur : <%=g.user.first_name %> </p>
 	<br/>
+  <p><%= link_to 'lire la suite', gossip_path(id+1) %></p>
 <% end %>
