@@ -11,13 +11,13 @@ require 'faker'
 Faker::Config.locale = 'fr'
 
 # Détruire la base actuelle
-City.destroy_all
-Gossip.destroy_all
 GossipTagLink.destroy_all
-PrivateMessage.destroy_all
+Gossip.destroy_all
 Tag.destroy_all
-User.destroy_all
 PrivateMessageRecipient.destroy_all
+PrivateMessage.destroy_all
+User.destroy_all
+City.destroy_all
 
 # Remettre les compteurs à 0
 ActiveRecord::Base.connection.tables.each do |t|
@@ -27,15 +27,15 @@ end
 # Création de 10 villes et de 10 utilisateurs associés
 10.times do
 	City.create(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
-	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
+	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
 end
 # Création de 10 gossips
 20.times do
-	Gossip.create(title: Faker::Hipster.sentence(word_count: 3), content: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true), user_id: User.ids.sample)
+	Gossip.create(title: Faker::Lorem.sentence(word_count: 3, supplemental: false), content: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), user_id: User.ids.sample)
 end
 # Création de 10 tags
 10.times do
-	Tag.create(title: "##{Faker::Hipster.word}")
+	Tag.create(title: "##{Faker::Lorem.word}")
 end
 # Ajout des tags aux gossips (minimum un tag par gossip)
 Gossip.all.each do |g|

@@ -1,9 +1,13 @@
-<h1> <%= @user.first_name %>  <%= @user.last_name %>  </h1>
-
-<p> Description : <%= @user.description %> </p>
-
-<p> Email : <%= @user.email %> </p>
-
-<p> Age : <%= @user.age %> </p>
-
-<p> Ville : <%= @user.city.name %> </p>
+<div class="card mt-3">
+	<div class="card-header">
+		<h4 class="card-title"> <%= @user.first_name %>  <%= @user.last_name %> </h4>
+		<h6 class="card-subtitle mb-2 text-muted"> <%= @user.city.name %> </h6>
+		<h6 class="card-subtitle mb-2 text-muted"> <%= @user.age %> ans </h6>
+	</div>
+	<div class="card-body">
+		<p class="card-text"><%= @user.description %></p>
+	</div>
+	<div class="card-footer">
+		<a class="card-link" href=#> Email : <%= @user.email %> </a>
+	</div>
+</div>

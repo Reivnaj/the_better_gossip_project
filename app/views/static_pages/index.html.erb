@@ -1,18 +1,23 @@
-<h1> Bienvenue sur ce better gossip</h1>
+<h1 class="text-center my-5"> Bienvenue sur ce better gossip</h1>
 
-<h2> Les potins </h2>
+<h2 class="text-center mb-3"> Les potins </h2>
 
-<% @all_gossips.each_with_index do |g,id| %>
+<div class="d-flex justify-content-around align-items-center flex-wrap">
+	<% @all_gossips.each_with_index do |g,id| %>
 
-<div class="card mt-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%=g.title%></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
-    <p class="card-text"><%=g.created_at %></p>
-    <p class="card-text"><%=g.content[0..20] %>...</p>
-    <p class="card-link"><%= link_to 'lire la suite', gossip_path(id+1) %></p>
+	<div class="card mt-3" style="width: 18rem;">
+		<div class="card-header">
+			<h5 class="card-title"><%=g.title%></h5>
+			<h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
+			<p class="card-text text-muted"><%=g.created_at %></p>
+		</div>
+		<div class="card-body">
+			<p class="card-text"><%=g.content[0..100] %>...</p>
+		</div>
+		<div class="card-footer">
+			<%= link_to 'Lire la suite', gossip_path(id+1), { :class=>"card-link" } %>
+		</div>
+	</div>
 
-  </div>
+	<% end %>
 </div>
-
-<% end %>

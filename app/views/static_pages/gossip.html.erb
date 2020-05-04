@@ -1,6 +1,16 @@
-<h1>  <%= @gossip.title %>  </h1>
-
-
-<p> <%= @gossip.content %> </p>
-<br/>
-<p> <%= @gossip.user.first_name %> <%= link_to 'Profil', user_path(@gossip.user_id) %> </p>
+<div class="card mt-3">
+  <div class="card-header">
+  	<h3 class="card-title"><%= @gossip.title %> </h3>
+  	<h5 class="card-subtitle mb-2 text-muted"><%= @gossip.user.first_name %></h5>
+  	<p class="card-text text-muted"><%= @gossip.created_at %></p>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= @gossip.content %></p>
+    <%= link_to "Profil de l'auteur", user_path(@gossip.user_id), {:class=>"card-link"} %>
+  </div>
+  <div class="card-footer">
+  	<% @gossip.tags.each do |tag| %>
+    <a class="card-link" href=#> <%= tag.title %> </a>
+    <% end %>
+  </div>
+</div>

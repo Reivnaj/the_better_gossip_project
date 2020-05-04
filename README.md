@@ -1,24 +1,14 @@
-# README
+# Bienvenue sur notre super site de gossips !
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Avant de commencer :
+1. Faire un `bundle install`
+2. Lancer la création de la base de données avec un `rails db:create`
+3. Passer toutes les migrations `rails db:migrate`
+4. Remplir la BDD avec un `rails db:seed`
+5. Y'a plus qu'à lancer le server : `rails server`
 
-Things you may want to cover:
+Tu peux accéder à notre site sur [http://localhost:3000/](http://localhost:3000/)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Fonctionnalités :
+Dans la page d'accueil, tu peux voir tous les potins ! Si tu veux en savoir plus, clique sur "lire la suite".
+Depuis la page de chaque potin, tu peux accéder à la page de profil de l'auteur.
