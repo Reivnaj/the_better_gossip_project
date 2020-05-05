@@ -1,4 +1,6 @@
 class Gossip < ApplicationRecord
+	after_create :success_message
+
 	belongs_to :user
 	has_many :gossip_tag_links
 	has_many :tags, through: :gossip_tag_links
@@ -9,4 +11,8 @@ class Gossip < ApplicationRecord
 	validates :title, length: { minimum: 3, maximum: 14}
 	# Contenu obligatoire
 	validates :content, presence: true
+
+	def success_message
+		message = "Potin créé ! Bravo et merci"
+	end
 end
