@@ -16,10 +16,6 @@ class StaticPagesController < ApplicationController
     @all_gossips = Gossip.all
   end
 
-  def gossip
-    @gossip = Gossip.find(params['id'])
-  end
-
   def user
     @user = User.find(params['id'])
   end
