@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-around align-items-center flex-wrap">
 	<% @all_gossips.each_with_index do |g,id| %>
 
-	<div class="card mt-3" style="width: 18rem;">
+	<div class="card mt-3 mb-3" style="width: 18rem;">
 		<div class="card-header">
 			<h5 class="card-title"><%=g.title%></h5>
 			<h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
