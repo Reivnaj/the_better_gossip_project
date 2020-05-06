@@ -10,6 +10,7 @@ class GossipsController < ApplicationController
 
   def new
   	@gossip = Gossip.new
+    @all_tags = Tag.all
   end
 
   def create
@@ -27,6 +28,7 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params['id'])
+    @all_tags = Tag.all
   end
 
   def update

@@ -24,6 +24,13 @@
 	<%= form.text_area :content %>
 </p>
 
+<label for="tags">Choisir un tag:</label>
+<select id="tags" name="taglist" form="tagform">
+	<% @all_tags.each do |tag| %>
+  <option value= <%= tag.title %> > <%= tag.title %> </option>
+  <% end %>
+</select>
+
 <p>
 	<%= form.submit 'Enregistrer' %>
 </p>

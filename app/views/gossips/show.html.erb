@@ -17,7 +17,22 @@
 
 
 <h2>Commentaires</h2>
-<%= render @gossip.comments %>
+<% @gossip.comments.each do |comment| %>
+  <p> <strong><%= comment.user.first_name %></strong>  </p>
+  <p>
+    <strong>Commentaire :</strong>
+    <%= comment.content %>
+  </p>
+  <%= link_to 'Modifier',  edit_gossip_comment_path(@gossip)%>
+<% end %>
 
 <h2>Ajouter un commentaire :</h2>
-<%= render 'comments/form' %>
+<%= form_with(model: [ @gossip, @gossip.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :content, 'Commentaire :' %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit 'Enregistrer', {:class=>"btn btn-success" } %>
+  </p>
+<% end %>
