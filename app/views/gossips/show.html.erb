@@ -1,7 +1,7 @@
 <div class="card mt-3">
   <div class="card-header">
   	<h3 class="card-title"><%= @gossip.title %> </h3>
-  	<h5 class="card-subtitle mb-2 text-muted"><%= @gossip.user.first_name %>, <%= @gossip.user.city.name %></h5>
+  	<h5 class="card-subtitle mb-2 text-muted"><%= @gossip.user.first_name %>, <%= link_to @gossip.user.city.name, city_path(@gossip.user.city_id) %></h5>
   	<p class="card-text text-muted"><%= @gossip.created_at %></p>
   </div>
   <div class="card-body">
