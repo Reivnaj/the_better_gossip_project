@@ -1,4 +1,3 @@
-
 class CommentsController < ApplicationController
 
   def create
@@ -17,16 +16,12 @@ class CommentsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:gossip_id])
-  	@comment = Comment.find(params[:id])
+  	@comment = @gossip.comments.find(params[:id])
   end
 
   def update
     @gossip = Gossip.find(params[:gossip_id])
-    @comment = Comment.find(params[:id])
-
-    puts @comment
-    puts @gossip
-    puts comment_params
+    @comment = @gossip.comments.find(params[:id])
 
   	if @comment.update(comment_params)
   		redirect_to @gossip
