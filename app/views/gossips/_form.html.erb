@@ -1,0 +1,31 @@
+<%= form_with model: @gossip, local: true do |form| %>
+
+<% if @gossip.errors.any? %>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<p>Nous n'avons pas réussi à enregistrer le potin pour la (ou les) raison(s) suivante(s) :</p>
+		<ul>
+			<% @gossip.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<% end %>
+
+<p>
+	<%= form.label :title, 'Titre' %><br>
+	<%= form.text_field :title %>
+</p>
+
+<p>
+	<%= form.label :content, 'Contenu' %><br>
+	<%= form.text_area :content %>
+</p>
+
+<p>
+	<%= form.submit 'Enregistrer' %>
+</p>
+
+<% end %>

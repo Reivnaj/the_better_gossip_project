@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :gossips, only: [:new, :create, :show, :index]
+  resources :gossips, except: [:destroy] 
   resources :users, only: [:show]
   resources :cities, only: [:show]
   get 'team', to: 'static_pages#home'
