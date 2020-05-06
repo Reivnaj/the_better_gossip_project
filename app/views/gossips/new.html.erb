@@ -1,16 +1,18 @@
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
 	<% if @gossip.errors.any? %>
-	<p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
-	<ul>
-		<% @gossip.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-		<% end %>
-	</ul>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+		<ul>
+			<% @gossip.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 	<% end %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+ 
+
 
 <h1>Ajouter un potin</h1>
 <p>Remplis le formulaire pour ajouter un potin :</p>

@@ -1,9 +1,11 @@
+<% if !alert.nil? %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <%= alert %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+	<%= alert %>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
 </div>
+<% end %>
 
 <h1 class="text-center my-5"> Bienvenue sur ce better gossip</h1>
 

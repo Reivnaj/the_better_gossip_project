@@ -12,7 +12,7 @@ class GossipsController < ApplicationController
       redirect_to '/', alert: "Potin créé ! Bravo !"
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
-      render :action => "new"
+      render :new
     end
 
   end
