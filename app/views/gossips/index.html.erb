@@ -26,7 +26,11 @@
 			<p class="card-text"><%=g.content[0..100] %>...</p>
 		</div>
 		<div class="card-footer">
-			<%= link_to 'Lire la suite', gossip_path(id+1), { :class=>"card-link" } %>
+			<%= link_to 'Lire la suite', gossip_path(id+1), { :class=>"card-link btn btn-primary" } %>
+      <%= link_to 'Editer', edit_gossip_path(id+1), { :class=>"card-link btn btn-success" } %>
+      <%= link_to 'Supprimer', gossip_path(id+1),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'card-link btn btn-danger' %>
 		</div>
 	</div>
 

@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  
+
   def index
     @all_gossips = Gossip.all
   end
@@ -39,8 +39,14 @@ class GossipsController < ApplicationController
   	end
   end
 
+  def destroy
+    @gossip = Gossip.find(params['id'])
+    @gossip.destroy
+    redirect_to gossips_path
+  end
+
   private
-  
+
   def gossip_params
   	params.require(:gossip).permit(:title, :content)
   end
