@@ -13,4 +13,11 @@
     <a class="card-link" href=#> <%= tag.title %> </a>
     <% end %>
   </div>
-</div>_pages#gossi
+</div>
+
+
+<h2>Commentaires</h2>
+<%= render @gossip.comments %>
+
+<h2>Ajouter un commentaire :</h2>
+<%= render 'comments/form' %>

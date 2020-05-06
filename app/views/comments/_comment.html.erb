@@ -1,0 +1,7 @@
+<% @gossip.comments.each do |comment| %>
+  <p> <strong><%= comment.user.first_name %></strong>  </p>
+  <p>
+    <strong>Commentaire :</strong>
+    <%= comment.content %>
+  </p>
+<% end %>
