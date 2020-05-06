@@ -20,4 +20,9 @@ class GossipsController < ApplicationController
   def show
     @gossip = Gossip.find(params['id'])
   end
+
+  def index
+    @all_gossips = Gossip.all
+  end
+
 end

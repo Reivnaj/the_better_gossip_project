@@ -12,9 +12,6 @@ class StaticPagesController < ApplicationController
     @first_name = params['first_name']
   end
 
-  def index
-    @all_gossips = Gossip.all
-  end
 
   def user
     @user = User.find(params['id'])
