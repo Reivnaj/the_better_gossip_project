@@ -29,6 +29,9 @@ end
 	City.create(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
 	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
 end
+
+anonymous = User.create(first_name: 'anonymous', last_name: 'anonymous', description: 'I am anonymous', email: 'anonymous@anonymous.com', age: 70, city: City.first)
+
 # Création de 10 gossips
 20.times do
 	Gossip.create(title: Faker::Lorem.sentence(word_count: 3, supplemental: false), content: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), user_id: User.ids.sample)

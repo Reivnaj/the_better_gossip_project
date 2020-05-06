@@ -21,6 +21,7 @@
 			<h5 class="card-title"><%=g.title%></h5>
 			<h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
 			<p class="card-text text-muted"><%=g.created_at %></p>
+      <p class="card-text text-muted"><%=g.comments.size%> commentaires</p>
 		</div>
 		<div class="card-body">
 			<p class="card-text"><%=g.content[0..100] %>...</p>

@@ -1,3 +1,4 @@
+
 class CommentsController < ApplicationController
 
   def create
@@ -12,6 +13,27 @@ class CommentsController < ApplicationController
   	else
   		redirect_to gossip_path(@gossip), alert: "Tu n'as rien écris ..."
   	end
+  end
+
+  def edit
+    @gossip = Gossip.find(params[:gossip_id])
+  	@comment = Comment.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = Comment.find(params[:id])
+
+    puts @comment
+    puts @gossip
+    puts comment_params
+
+  	if @comment.update(comment_params)
+  		redirect_to @gossip
+  	else
+  		render :edit
+  	end
+
   end
 
   private

@@ -1,0 +1,11 @@
+<h1>Modifie ton commentaire :</h1>
+
+<%= form_with model: @comments, local: true do |form| %>
+  <p>
+    <%= form.label :content, 'Commentaire :' %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit 'Enregistrer', {:class=>"btn btn-success" } %>
+  </p>
+<% end %>
