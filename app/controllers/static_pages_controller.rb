@@ -13,8 +13,6 @@ class StaticPagesController < ApplicationController
   end
 
 
-  def user
-    @user = User.find(params['id'])
-  end
+  
 
 end
