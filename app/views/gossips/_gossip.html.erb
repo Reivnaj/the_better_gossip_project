@@ -1,0 +1,20 @@
+<div class="card mt-3 mb-3">
+	<div class="card-header">
+		<h5 class="card-title"><%=gossip.title%></h5>
+		<h6 class="card-subtitle mb-2 text-muted"><%=gossip.user.first_name %></h6>
+		<p class="card-text text-muted"><%=gossip.created_at %></p>
+		<p class="card-text text-muted"><%=gossip.comments.size%> commentaires</p>
+	</div>
+	<div class="card-body">
+		<p class="card-text"><%=gossip.content[0..100] %>...</p>
+	</div>
+	<div class="card-footer">
+		<%= link_to 'Lire la suite', gossip_path(gossip), { :class=>"card-link btn btn-primary" } %>
+		<% if current_user == gossip.user %>
+		<%= link_to 'Editer', edit_gossip_path(gossip), { :class=>"card-link btn btn-success" } %>
+		<%= link_to 'Supprimer', gossip_path(gossip),
+		method: :delete,
+		data: { confirm: 'Are you sure?' }, class: 'card-link btn btn-danger' %>
+		<% end %>
+	</div>
+</div>

@@ -19,31 +19,10 @@
 
 <h2 class="text-center mb-3"> Les potins </h2>
 
-<p> Tu as du nouveau ? C'est par <%= link_to 'ici', new_gossip_path %> pour créer un nouveau potin </p>
+<div class="alert alert-primary" role="alert">
+  Tu as du nouveau ? C'est par <%= link_to 'ici', new_gossip_path %> pour créer un nouveau potin 
+</div>
 
-<div class="d-flex justify-content-around align-items-center flex-wrap">
-	<% @all_gossips.each do |g| %>
-
-	<div class="card mt-3 mb-3" style="width: 18rem;">
-		<div class="card-header">
-			<h5 class="card-title"><%=g.title%></h5>
-			<h6 class="card-subtitle mb-2 text-muted"><%=g.user.first_name %></h6>
-			<p class="card-text text-muted"><%=g.created_at %></p>
-      <p class="card-text text-muted"><%=g.comments.size%> commentaires</p>
-		</div>
-		<div class="card-body">
-			<p class="card-text"><%=g.content[0..100] %>...</p>
-		</div>
-		<div class="card-footer">
-			<%= link_to 'Lire la suite', gossip_path(g), { :class=>"card-link btn btn-primary" } %>
-      <% if current_user == g.user %>
-        <%= link_to 'Editer', edit_gossip_path(g), { :class=>"card-link btn btn-success" } %>
-        <%= link_to 'Supprimer', gossip_path(g),
-                method: :delete,
-                data: { confirm: 'Are you sure?' }, class: 'card-link btn btn-danger' %>
-      <% end %>
-		</div>
-	</div>
-
-	<% end %>
+<div class="container" >
+	<%= render @all_gossips %>
 </div>
