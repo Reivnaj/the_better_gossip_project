@@ -14,8 +14,9 @@ class GossipsController < ApplicationController
   end
 
   def create
-    user = User.find_by(first_name: "anonymous")
-    @gossip = user.gossips.new(gossip_params) # avec xxx qui sont les données obtenues à partir du formulaire
+    
+    @gossip = Gossip.new(gossip_params)
+    @gossip.user = current_user # avec xxx qui sont les données obtenues à partir du formulaire
     if @gossip.save # essaie de sauvegarder en base @gossip
       # si ça marche, il message: "email adress please"edirige vers la page d'index du site
       flash[:success] = "Potin créé ! Bravo !"

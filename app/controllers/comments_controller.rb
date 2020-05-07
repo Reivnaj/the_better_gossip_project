@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
 
   def create
+
    	@gossip = Gossip.find(params[:gossip_id])
   	@comment = @gossip.comments.new(comment_params)
-  	# Temporaire
-  	anonymous = User.find_by(first_name: "anonymous")
-  	@comment.user = anonymous
+  	
+  	@comment.user = current_user
 
   	if @comment.save
   		redirect_to gossip_path(@gossip)
