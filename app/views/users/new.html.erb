@@ -1,0 +1,66 @@
+<h1>Inscription</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+
+<% if @user.errors.any? %>
+ <%= params %>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<p>Inscription impossible remplis les champs comme demandé :</p>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<% end %>
+
+<div class="form-group">
+	<%= form.label :first_name, 'Prénom' %><br>
+	<%= form.text_field :first_name, required: true %>
+</div>
+
+<div class="form-group">
+	<%= form.label :last_name, 'Nom' %><br>
+	<%= form.text_field :last_name, required: true%>
+</div>
+
+<div class="form-group">
+	<%= form.label :description, 'Description' %><br>
+	<%= form.text_area :description, required: true%>
+</div>
+
+<div class="form-group">
+  <label for="cities">Choisir ta ville:</label>
+
+  <%= form.select(:city_id) do %>
+    <% @all_cities.each do |city| -%>
+      <%= content_tag(:option, city.name, value: city.id) %>
+    <% end %>
+  <% end %>
+
+</div>
+
+<div class="form-group">
+	<%= form.label :age, 'Age' %><br>
+	<%= form.text_field :age, required: true%>
+</div>
+
+<div class="form-group">
+	<%= form.label :email, 'Email' %><br>
+	<%= form.text_field :email, required: true %>
+</div>
+
+<div class="form-group">
+	<%= form.label :password, 'Mot de passe' , required: true %><br>
+	<%= form.password_field :password %>
+</div>
+
+
+<p>
+	<%= form.submit 'Enregistrer' %>
+</p>
+
+<% end %>
