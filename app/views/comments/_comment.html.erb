@@ -1,6 +1,12 @@
-  <p> <strong><%= comment.user.first_name %></strong>  </p>
-  <p>
-    <strong>Commentaire :</strong>
-    <%= comment.content %>
-  </p>
-  <%= link_to 'Modifier',  edit_gossip_comment_path(@gossip)%>
+<div class="card my-3">
+  <div class="card-body">
+    <h5 class="card-title"><strong><%= comment.user.first_name %></strong></h5>
+    <p class="card-text"><%= comment.content %></p>
+  </div>
+  <div class="card-footer">
+  	<%= link_to 'Modifier',  edit_gossip_comment_path(comment.gossip, comment), class: 'btn btn-primary' %>
+  	<%= link_to 'Supprimer', [comment.gossip, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+</div>
+
+ 

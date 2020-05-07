@@ -19,15 +19,21 @@ class CommentsController < ApplicationController
   end
 
   def update
+    puts params
     @gossip = Gossip.find(params[:gossip_id])
     @comment = @gossip.comments.find(params[:id])
-
-  	if @comment.update(comment_params)
+  	if @comment.update(content: params[:content])
   		redirect_to @gossip
   	else
   		render :edit
   	end
+  end
 
+  def destroy
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @gossip
   end
 
   private
