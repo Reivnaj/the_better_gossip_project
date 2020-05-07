@@ -6,6 +6,14 @@
 	</button>
 </div>
 <% end %>
+<% if !flash[:danger].nil? %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= flash[:danger] %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
 
 <h1 class="text-center my-5"> Bienvenue sur ce better gossip</h1>
 
@@ -14,7 +22,7 @@
 <p> Tu as du nouveau ? C'est par <%= link_to 'ici', new_gossip_path %> pour créer un nouveau potin </p>
 
 <div class="d-flex justify-content-around align-items-center flex-wrap">
-	<% @all_gossips.each_with_index do |g,id| %>
+	<% @all_gossips.each do |g| %>
 
 	<div class="card mt-3 mb-3" style="width: 18rem;">
 		<div class="card-header">
@@ -27,11 +35,13 @@
 			<p class="card-text"><%=g.content[0..100] %>...</p>
 		</div>
 		<div class="card-footer">
-			<%= link_to 'Lire la suite', gossip_path(id+1), { :class=>"card-link btn btn-primary" } %>
-      <%= link_to 'Editer', edit_gossip_path(id+1), { :class=>"card-link btn btn-success" } %>
-      <%= link_to 'Supprimer', gossip_path(id+1),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }, class: 'card-link btn btn-danger' %>
+			<%= link_to 'Lire la suite', gossip_path(g), { :class=>"card-link btn btn-primary" } %>
+      <% if current_user == g.user %>
+        <%= link_to 'Editer', edit_gossip_path(g), { :class=>"card-link btn btn-success" } %>
+        <%= link_to 'Supprimer', gossip_path(g),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class: 'card-link btn btn-danger' %>
+      <% end %>
 		</div>
 	</div>
 

@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :show]
+  before_action :author_is_curent_user ,only: [:edit, :update, :destroy]
 
   def index
     @all_gossips = Gossip.all
@@ -15,7 +16,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    
+
     @gossip = Gossip.new(gossip_params)
     @gossip.user = current_user # avec xxx qui sont les données obtenues à partir du formulaire
     if @gossip.save # essaie de sauvegarder en base @gossip
@@ -59,6 +60,13 @@ class GossipsController < ApplicationController
     unless current_user
       flash[:danger] = "Tu n'es pas connecté !"
       redirect_to new_session_path
+    end
+  end
+
+  def author_is_curent_user
+    unless current_user == Gossip.find(params['id']).user 
+      flash[:danger] = "Tututut qu'est-ce que tu fais là ?!"
+      redirect_to gossips_path
     end
   end
 
