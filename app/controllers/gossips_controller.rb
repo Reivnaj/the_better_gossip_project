@@ -8,6 +8,7 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params['id'])
+    @like = @gossip.likes.find_by(user: current_user) if @gossip.is_liked?(current_user)
   end
 
   def new

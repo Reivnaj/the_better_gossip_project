@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   
   def create
-
    	@gossip = Gossip.find(params[:gossip_id])
   	@comment = @gossip.comments.new(comment_params)
   	

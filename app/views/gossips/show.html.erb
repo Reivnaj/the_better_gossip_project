@@ -12,6 +12,17 @@
   	<% @gossip.tags.each do |tag| %>
     <a class="card-link" href=#> <%= tag.title %> </a>
     <% end %>
+
+    <% if !@gossip.is_liked?(current_user) %>
+      <%= form_with(model: [ @gossip, @gossip.likes.build ], local: true) do |form| %>
+      <%= form.submit 'Like', {:class=>"btn btn-success" } %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Unlike', [@gossip, @like], method: :delete, class: "btn btn-secondary" %>
+    <% end%>
+
+    <div> <%= @gossip.likes.count %> likes </div>
+
   </div>
 </div>
 
