@@ -18,7 +18,8 @@ class GossipsController < ApplicationController
     @gossip = user.gossips.new(gossip_params) # avec xxx qui sont les données obtenues à partir du formulaire
     if @gossip.save # essaie de sauvegarder en base @gossip
       # si ça marche, il message: "email adress please"edirige vers la page d'index du site
-      redirect_to gossips_path, alert: "Potin créé ! Bravo !"
+      flash[:success] = "Potin créé ! Bravo !"
+      redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
       render :new

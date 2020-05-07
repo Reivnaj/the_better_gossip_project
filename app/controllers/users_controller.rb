@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     if @user.save # essaie de sauvegarder en base @user
       # si ça marche, il message "Bravo ! Tu es inscri ! " redirige vers la page d'index du site
       flash[:success] = "Bravo ! Tu es inscri !"
+      log_in(@user)
       redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
