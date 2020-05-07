@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :show]
 
   def index
     @all_gossips = Gossip.all
@@ -52,6 +53,13 @@ class GossipsController < ApplicationController
 
   def gossip_params
   	params.require(:gossip).permit(:title, :content)
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Tu n'es pas connecté !"
+      redirect_to new_session_path
+    end
   end
 
 end

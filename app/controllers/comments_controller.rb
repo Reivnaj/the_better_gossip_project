@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  
   def create
 
    	@gossip = Gossip.find(params[:gossip_id])
