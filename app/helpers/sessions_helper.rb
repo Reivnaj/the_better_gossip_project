@@ -16,7 +16,7 @@ module SessionsHelper
         # nous allons prendre le remember_token stocké en cookie, le hasher, puis le comparer avec notre remember_digest stocké en base
         remember_token = cookies[:remember_token]
         remember_digest = user.remember_digest
-        user_authenticated = BCrypt::Password.new(remember_digest).is_password?(remember_token)
+        user_authenticated = BCrypt::Password.new(remember_digest).is_password?(remember_token) if !remember_digest.nil?
 
         # si tout est bon, il ne nous reste plus qu'à souhaiter bienvenue à l'utilisateur !
         if user_authenticated

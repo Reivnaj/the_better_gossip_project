@@ -5,14 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-	  # cherche s'il existe un utilisateur en base avec l’e-mail
+    # cherche s'il existe un utilisateur en base avec l’e-mail
 	  user = User.find_by(email: params[:email])
 	  # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe
 
     if user && user.authenticate(params[:password])
 	  	log_in(user)
 	    # redirige où tu veux, avec un flash ou pas
-      remember(user)
+      user.update(password: params[:password])
+      remember(user) if remember_me
 
       flash[:success] = "Bravo ! Tu es bien connecté !"
       redirect_to gossips_path
@@ -27,6 +28,10 @@ class SessionsController < ApplicationController
 
   	flash[:success] = "Tu t'es déconnecté. Au revoir"
   	redirect_to new_session_path
+  end
+
+  def remember_me
+    !params[:remember_me].nil?
   end
 
 end

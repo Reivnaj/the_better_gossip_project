@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       # si ça marche, il message "Bravo ! Tu es inscri ! " redirige vers la page d'index du site
       flash[:success] = "Bravo ! Tu es inscrit !"
       log_in(@user)
-      remember(@user)
+      remember(@user) if remember_me == "1"
       redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
@@ -27,6 +27,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :description, :age, :city_id, :password)
+  end
+
+  def remember_me
+    params.require(:user)[:remember_me]
   end
 
 end
