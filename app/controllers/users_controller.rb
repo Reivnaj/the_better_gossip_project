@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       # si ça marche, il message "Bravo ! Tu es inscri ! " redirige vers la page d'index du site
       flash[:success] = "Bravo ! Tu es inscrit !"
       log_in(@user)
+      remember(@user)
       redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)

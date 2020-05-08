@@ -35,14 +35,9 @@ puts "-"*50
 
 # Création de 10 utilisateurs
 10.times do |i|
-	User.create(password: "motdepasse", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
+	User.create(remember_digest: nil, password: "motdepasse", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
 	puts "#{i+1} utilisateur créé"
 end
-puts "-"*50
-
-# Création  de l'anonymous
-anonymous = User.create(first_name: 'anonymous', last_name: 'anonymous', description: 'I am anonymous', email: 'anonymous@anonymous.com', age: 70, city: City.first)
-puts "utilisateur anonyme créé"
 puts "-"*50
 
 # Création de 10 gossips

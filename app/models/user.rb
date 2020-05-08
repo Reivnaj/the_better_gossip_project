@@ -22,4 +22,10 @@ class User < ApplicationRecord
     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
 	# Format de l'age
 	validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
+  end
+
 end
