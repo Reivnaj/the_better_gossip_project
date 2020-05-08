@@ -35,7 +35,7 @@ puts "-"*50
 
 # Création de 10 utilisateurs
 10.times do |i|
-	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
+	User.create(password: "motdepasse", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: true), email: Faker::Internet.free_email, age: rand(20..50), city: City.all.sample)
 	puts "#{i+1} utilisateur créé"
 end
 puts "-"*50
