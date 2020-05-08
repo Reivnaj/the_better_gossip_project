@@ -9,13 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create
-
-    @all_cities = City.all
     @user = User.new(user_params) # avec xxx qui sont les données obtenues à partir du formulaire
-    @user.city = City.first 
     if @user.save # essaie de sauvegarder en base @user
       # si ça marche, il message "Bravo ! Tu es inscri ! " redirige vers la page d'index du site
-      flash[:success] = "Bravo ! Tu es inscri !"
+      flash[:success] = "Bravo ! Tu es inscrit !"
       log_in(@user)
       redirect_to gossips_path
     else
@@ -28,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :description, :age, :city, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :description, :age, :city_id, :password)
   end
 
 end
