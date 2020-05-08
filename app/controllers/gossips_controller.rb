@@ -17,18 +17,17 @@ class GossipsController < ApplicationController
   end
 
   def create
-
     @gossip = Gossip.new(gossip_params)
     @gossip.user = current_user # avec xxx qui sont les données obtenues à partir du formulaire
     if @gossip.save # essaie de sauvegarder en base @gossip
       # si ça marche, il message: "email adress please"edirige vers la page d'index du site
+      GossipTagLink.create(gossip: @gossip, tag_id: gossip_tag_link_params[:tag_id])
       flash[:success] = "Potin créé ! Bravo !"
       redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
       render :new
     end
-
   end
 
   def edit
@@ -55,6 +54,10 @@ class GossipsController < ApplicationController
 
   def gossip_params
   	params.require(:gossip).permit(:title, :content)
+  end
+
+  def gossip_tag_link_params
+    params.require(:gossip).permit(:tag_id)
   end
 
   def authenticate_user

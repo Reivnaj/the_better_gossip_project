@@ -14,25 +14,27 @@
 	</div>
 	<% end %>
 
-<p>
+<div class="form-group">
 	<%= form.label :title, 'Titre' %><br>
 	<%= form.text_field :title %>
-</p>
+</div>
 
-<p>
+<div class="form-group">
 	<%= form.label :content, 'Contenu' %><br>
 	<%= form.text_area :content %>
-</p>
+</div>
 
-<label for="tags">Choisir un tag:</label>
-<select id="tags" name="taglist" form="tagform">
-	<% @all_tags.each do |tag| %>
-  <option value= <%= tag.title %> > <%= tag.title %> </option>
+<div class="form-group">
+  <label for="tags">Choisir un tag:</label>
+  <%= form.select(:tag_id) do %>
+    <% @all_tags.each do |tag| -%>
+      <%= content_tag(:option, tag.title, value: tag.id) %>
+    <% end %>
   <% end %>
-</select>
+</div>
 
-<p>
+<div class="form-group">
 	<%= form.submit 'Enregistrer' %>
-</p>
+</div>
 
 <% end %>
