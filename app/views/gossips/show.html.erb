@@ -12,15 +12,7 @@
   	<% @gossip.tags.each do |tag| %>
     <a class="card-link" href=#> <%= tag.title %> </a>
     <% end %>
-
-    <% if !@gossip.is_liked?(current_user) %>
-      <%= form_with(model: [ @gossip, @gossip.likes.build ], local: true) do |form| %>
-      <%= form.submit 'Like', {:class=>"btn btn-success" } %>
-      <% end %>
-    <% else %>
-      <%= link_to 'Unlike', [@gossip, @like], method: :delete, class: "btn btn-secondary" %>
-    <% end%>
-
+    <%= render 'likes/button', locals: { gossip: @gossip } %>
     <div> <%= @gossip.likes.count %> likes </div>
 
   </div>
@@ -28,6 +20,9 @@
 
 
 <h4 class="mt-5">Commentaires</h4>
+<% if @gossip.comments.empty? %>
+<%= "Aucun commentaire" %>
+<%end%>
 <%= render @gossip.comments %>
 
 <h4 class="mt-5">Ajouter un commentaire :</h4>

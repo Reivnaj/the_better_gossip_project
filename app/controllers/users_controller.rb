@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
       render :new
     end
-
   end
 
   private

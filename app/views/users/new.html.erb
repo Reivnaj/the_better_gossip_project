@@ -1,7 +1,4 @@
-<h1>Inscription</h1>
-
-
-<%= form_with model: @user, local: true do |form| %>
+<h1 class="text-center my-4">Inscription</h1>
 
 <% if @user.errors.any? %>
  <%= params %>
@@ -16,57 +13,67 @@
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
-	<% end %>
-
-<div class="form-group">
-	<%= form.label :first_name, 'Prénom' %><br>
-	<%= form.text_field :first_name, required: true %>
-</div>
-
-<div class="form-group">
-	<%= form.label :last_name, 'Nom' %><br>
-	<%= form.text_field :last_name, required: true%>
-</div>
-
-<div class="form-group">
-	<%= form.label :description, 'Description' %><br>
-	<%= form.text_area :description, required: true%>
-</div>
-
-<div class="form-group">
-  <label for="cities">Choisir ta ville:</label>
-
-  <%= form.select(:city_id) do %>
-    <% @all_cities.each do |city| -%>
-      <%= content_tag(:option, city.name, value: city.id) %>
-    <% end %>
-  <% end %>
-
-</div>
-
-<div class="form-group">
-	<%= form.label :age, 'Age' %><br>
-	<%= form.text_field :age, required: true%>
-</div>
-
-<div class="form-group">
-	<%= form.label :email, 'Email' %><br>
-	<%= form.text_field :email, required: true %>
-</div>
-
-<div class="form-group">
-	<%= form.label :password, 'Mot de passe' , required: true %><br>
-	<%= form.password_field :password %>
-</div>
-
-<div class="form-check">
-	<%= form.check_box :remember_me , class: "form-check-input" %>
-	<%= form.label :remember_me, 'Se souvenir de moi' , class: "form-check-label"%><br>
-</div>
-
-
-<div class="form-group mt-3">
-	<%= form.submit 'Enregistrer', class: "btn btn-success" %>
-</div>
-
 <% end %>
+
+<div class="container col-lg-6 col-md-3 col-sm-12">
+	<div class="form-group text-center">
+
+		<%= form_with model: @user, local: true do |form| %>
+
+		<div class="form-group">
+			<%= form.text_field :first_name, class: 'form-control', required: true, placeholder: 'Prénom' %>
+		</div>
+
+		<div class="form-group">
+			<%= form.text_field :last_name, class: 'form-control', required: true, placeholder: 'Nom'%>
+		</div>
+
+		<div class="form-group">
+			<%= form.text_area :description, class: 'form-control' , required: true, placeholder: 'Description'%>
+		</div>
+
+		<div class="form-group">
+			<label for="cities">Choisis ta ville:</label>
+
+			<%= form.select(:city_id) do %>
+			<% @all_cities.each do |city| -%>
+			<%= content_tag(:option, city.name, value: city.id) %>
+			<% end %>
+			<% end %>
+
+		</div>
+
+		<div class="form-group">
+			<%= form.text_field :age, class: 'form-control' , required: true, placeholder: 'Age'%>
+		</div>
+
+		<div class="form-group">
+			<%= form.text_field :email, class: 'form-control' , required: true, placeholder: 'Email' %>
+		</div>
+
+		<div class="form-group">
+			<%= form.password_field :password, class: 'form-control' , required: true, placeholder: 'Mot de passe'%>
+			<small id="passwordHelpBlock" class="form-text text-muted">
+				Ton mot de passe doit avoir une longueur de 8 caractères 
+			</small>
+		</div>
+
+		<div class="form-check">
+			<%= form.check_box :remember_me , class: "form-check-input" %>
+			<%= form.label :remember_me, 'Se souvenir de moi' , class: "form-check-label"%><br>
+		</div>
+
+
+		<div class="form-group mt-3">
+			<%= form.submit "Valider l'inscription", class: "btn btn-success" %>
+		</div>
+
+		<% end %>
+
+		<div class="form-group mt-5">
+				<span class="mr-3 text-muted font-italic"> Tu as déjà un compte ? </span>
+				<%= link_to 'Connecte-toi !', new_session_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+
+</div>

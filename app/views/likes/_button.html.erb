@@ -1,0 +1,10 @@
+ <% if !@gossip.is_liked?(current_user) %>
+ <%= link_to gossip_likes_path(@gossip), method: :post, class: "btn btn-primary" do %>
+ <i class="far fa-thumbs-up"></i> Like
+ <%end%>
+ <% else %>
+ <% like = @gossip.likes.find_by(user: current_user) %>
+ <%= link_to [@gossip, like], method: :delete , class: "btn btn-secondary" do %>
+ <i class="far fa-thumbs-down"></i> Unlike
+ <%end%>
+ <% end%>

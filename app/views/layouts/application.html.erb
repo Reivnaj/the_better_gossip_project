@@ -8,47 +8,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/3b8c352610.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <!-- NavBar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <%= link_to "The Better Gossip Project", gossips_path, {:class=>"navbar-brand"}%>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Accueil", gossips_path, {:class=>"nav-link"}%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Notre team", team_path, {:class=>"nav-link"} %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Contact", contact_path, {:class=>"nav-link"} %>
-        </li>
-      </ul>
-
-      <div class="d-flex justify-content-end">
-          <% if logged_in? %>
-              <%= link_to "Se déconnecter", session_path(session.id), method: :delete, data: {confirm: 'Es-tu sûr de vouloir te déconnecter ?'}, class: "btn btn-danger" %>
-          <% else %>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                log-in/sign-up
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to "se connecter", new_session_path, {:class=>"dropdown-item"} %>
-                <%= link_to "s'inscrire", new_user_path, {:class=>"dropdown-item"} %>
-              </div>
-            </div>
-          <% end %>
-      </div>
-
-    </div>
-  </nav>
+  <%= render 'layouts/navbar' %>
   <div class="container mt-3">
     <%= yield %>
   </div>
